@@ -1,6 +1,7 @@
 import random
 import time
 from io import BytesIO
+from operator import itemgetter
 
 import pyautogui
 import requests
@@ -125,6 +126,8 @@ for y in range(hauteur):
 if randomTab == 'y':
     random.shuffle(drawTab)
 
+drawTab.sort(key=itemgetter(3))
+
 lastcolor = 2
 selectColor(lastcolor)
 
@@ -133,7 +136,7 @@ for line in drawTab:
     y = startY + line[0]
     endX = startX + line[2]
     color = line[3]
-    if color != lastColor:
+    if color != lastcolor:
         selectColor(color)
         lastcolor = color
 
