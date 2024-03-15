@@ -17,6 +17,7 @@ posTab = eval(f.read())
 f.close()
 print(posTab)
 print("BIEN LANCER LE SCRIPT INTICOLORS AVANT UTILISATION")
+rescale = int(input("Rescale l'image : "))
 randomTab = input("random ? y/n : ")
 imageUrl = input("Url de l'image : ")
 waitClick = input('Attendre un click ? y/n : ')
@@ -54,6 +55,7 @@ if waitClick == "y":
         print('t')
 
 i = openImage(finalImage)
+i = i.reduce(rescale)
 largeur = i.size[0]
 hauteur = i.size[1]
 
