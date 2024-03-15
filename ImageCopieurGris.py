@@ -7,6 +7,15 @@ import requests
 from PIL.Image import open as openImage
 from pynput.mouse import Listener
 
+
+startX = 546
+startY = 316
+
+f = open("config.txt", "r")
+posTab = eval(f.read())
+f.close()
+print(posTab)
+print("BIEN LANCER LE SCRIPT INTICOLORS AVANT UTILISATION")
 randomTab = input("random ? y/n : ")
 imageUrl = input("Url de l'image : ")
 waitClick = input('Attendre un click ? y/n : ')
@@ -15,15 +24,13 @@ clicked = False
 image = requests.get(imageUrl, stream=True)
 finalImage = BytesIO(image.content)
 
-startX = 546
-startY = 316
 
-posGrey1 = (1073, 145)
-posGrey2 = (1068, 177)
-posGrey3 = (1098, 175)
-posGrey4 = (1127, 175)
-posGrey5 = (1159, 176)
-posGrey6 = (1071, 115)
+posGrey1 = posTab[0]
+posGrey2 = posTab[1]
+posGrey3 = posTab[2]
+posGrey4 = posTab[3]
+posGrey5 = posTab[4]
+posGrey6 = posTab[5]
 
 
 def on_click(x, y, button, pressed):
