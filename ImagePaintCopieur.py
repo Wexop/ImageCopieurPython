@@ -10,6 +10,7 @@ from pynput.mouse import Listener
 randomTab = input("random ? y/n : ")
 imageUrl = input("Url de l'image : ")
 average = int(input("Moyenne de rgb pour le noir : "))
+rescale = int(input("Rescale l'image : "))
 waitClick = input('Attendre un click ? y/n : ')
 clicked = False
 
@@ -40,6 +41,7 @@ if waitClick == "y":
         print(clicked)
 
 i = openImage(finalImage)
+i = i.reduce(rescale)
 largeur = i.size[0]
 hauteur = i.size[1]
 
