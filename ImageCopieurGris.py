@@ -8,7 +8,6 @@ import requests
 from PIL.Image import open as openImage
 from pynput.mouse import Listener
 
-
 startX = 546
 startY = 316
 
@@ -25,7 +24,6 @@ clicked = False
 
 image = requests.get(imageUrl, stream=True)
 finalImage = BytesIO(image.content)
-
 
 posGrey1 = posTab[0]
 posGrey2 = posTab[1]
@@ -132,7 +130,8 @@ drawTab.sort(key=itemgetter(3))
 
 lastcolor = 2
 selectColor(lastcolor)
-
+pyautogui.MINIMUM_SLEEP = 0.01
+pyautogui.MINIMUM_DURATION = 0.01
 for line in drawTab:
     x = startX + line[1]
     y = startY + line[0]
