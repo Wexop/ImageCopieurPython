@@ -6,7 +6,6 @@ import keyboard
 import pyautogui
 import requests
 from PIL import Image
-from pyautogui import keyDown
 from pynput.mouse import Listener
 
 # Récupérer les entrées utilisateur
@@ -29,6 +28,7 @@ startX, startY = 546, 316
 minLineLen = 3
 minBetweenLineLen = 5
 
+
 # Classe pour gérer le clic de la souris
 class ClickListener:
     def __init__(self):
@@ -43,6 +43,7 @@ class ClickListener:
             print("CLICKED")
             return False
 
+
 # Attendre un clic si nécessaire
 listener = ClickListener()
 if waitClick == "y":
@@ -50,9 +51,11 @@ if waitClick == "y":
         l.join()
     startX, startY = listener.startX, listener.startY
 
+
 # Fonction pour obtenir la moyenne RGB pour la luminosité du pixel
 def get_rgb_average(rgb_tuple):
     return sum(rgb_tuple[:3]) / 3
+
 
 # Préparer les lignes à dessiner
 drawTab = []

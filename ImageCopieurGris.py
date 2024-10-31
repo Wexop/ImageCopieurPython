@@ -9,7 +9,6 @@ import requests
 from PIL.Image import open as openImage
 from pynput.mouse import Listener
 
-
 startX = 546
 startY = 316
 
@@ -26,7 +25,6 @@ clicked = False
 
 image = requests.get(imageUrl, stream=True)
 finalImage = BytesIO(image.content)
-
 
 posGrey1 = posTab[0]
 posGrey2 = posTab[1]
