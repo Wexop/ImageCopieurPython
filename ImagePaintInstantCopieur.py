@@ -26,8 +26,8 @@ width, height = image.size
 # Position de départ initiale
 startX, startY = 546, 316
 
-minLineLen = 10
-minBetweenLineLen = 20
+minLineLen = 3
+minBetweenLineLen = 5
 
 # Classe pour gérer le clic de la souris
 class ClickListener:
@@ -103,6 +103,8 @@ if randomTab == 'y':
 # Dessiner les lignes avec pyautogui
 time.sleep(1)
 start_time = time.time()  # Temps de début
+
+pyautogui.PAUSE = 0.01
 
 for y, start_x, end_x in drawTab:
     if keyboard.is_pressed('e'):

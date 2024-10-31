@@ -3,6 +3,7 @@ import time
 from io import BytesIO
 from operator import itemgetter
 
+import keyboard
 import pyautogui
 import requests
 from PIL.Image import open as openImage
@@ -133,7 +134,18 @@ drawTab.sort(key=itemgetter(3))
 lastcolor = 2
 selectColor(lastcolor)
 
+print('LONGUEUR DE DRAW TAB =', len(drawTab))
+print('DURÉE ESTIMÉE DU DESSIN =', len(drawTab) * 0.01204427083333333333333333333333, "SECONDES")
+
+pyautogui.PAUSE = 0
+pyautogui.MINIMUM_DURATION = 0
+pyautogui.MINIMUM_SLEEP = 0
+start_time = time.time()  # Temps de début
+
 for line in drawTab:
+    if keyboard.is_pressed('space'):
+        print("La touche 'space' a été appuyée, arrêt de la boucle.")
+        break
     x = startX + line[1]
     y = startY + line[0]
     endX = startX + line[2]
@@ -144,5 +156,12 @@ for line in drawTab:
 
     pyautogui.moveTo(x, y, 0)
     pyautogui.mouseDown()
-    pyautogui.dragTo(endX, mouseDownUp=True)
+    pyautogui.dragTo(endX, mouseDownUp=True, duration=0)
     pyautogui.mouseUp()
+
+
+end_time = time.time()  # Temps de fin
+duration = end_time - start_time
+
+# Afficher la durée totale de l'exécution de la boucle de dessin
+print('Durée totale de la boucle de dessin :', duration, 'secondes')
